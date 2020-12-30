@@ -1,0 +1,7 @@
+.unordered-list {
+  list-style-type: none;
+  width: 80vw;
+  height: 50vh;
+  margin: 0 auto;
+  padding: 0;
+}

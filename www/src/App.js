@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ToDoForm from "./components/ToDoForm";
 import ToDoItems from "./components/ToDoItems";
+import "./App.css";
 
 const App = () => {
   const [todoValue, setTodoValue] = useState("");
@@ -21,7 +22,6 @@ const App = () => {
     let newTodos = [...todos];
     newTodos = newTodos.filter((item, index) => i !== index);
     setTodos(newTodos);
-    // setTodos(todos.filter((item, index) => i !== index));
   };
 
   //edit ToDos

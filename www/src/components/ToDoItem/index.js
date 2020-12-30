@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./style.css";
 
 const ToDoItem = ({ todo, removeItems, index, editItems }) => {
   const [isCompleted, setIsCompleted] = useState(false);

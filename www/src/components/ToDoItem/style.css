@@ -1,4 +1,34 @@
-/* .list-item input[type="text"] {
-  color: red;
-  text-decoration: line-through;
-} */
+.list-item {
+  display: flex;
+  height: 4vh;
+  border: 1px solid rgb(236, 90, 236);
+}
+
+.list-item input[type="text"] {
+  width: 60%;
+  padding-left: 10px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 10px;
+  outline: none;
+  background: rgb(163, 49, 163);
+}
+
+.list-item button {
+  width: 35%;
+  background: rgb(241, 9, 9);
+  font-size: 1.2rem;
+  border-radius: 10px;
+  outline: none;
+}
+
+.list-item button:hover {
+  cursor: pointer;
+}
+
+.list-item input[type="checkbox"] {
+  width: 5%;
+  height: 3vh;
+  align-self: center;
+  cursor: pointer;
+}

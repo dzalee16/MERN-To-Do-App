@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: linear-gradient(250deg, #3a249c, #75185e);
+}
+
+.app h1 {
+  text-align: center;
+  color: white;
+  margin: 20px 0;
+}
