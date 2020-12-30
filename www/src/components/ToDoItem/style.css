@@ -1,25 +1,29 @@
 .list-item {
   display: flex;
-  height: 4vh;
+  justify-content: space-between;
+  height: 40px;
   border: 1px solid rgb(236, 90, 236);
+  background: rgb(163, 49, 163);
 }
 
 .list-item input[type="text"] {
-  width: 60%;
+  width: 70%;
   padding-left: 10px;
   font-size: 1.2rem;
   font-weight: 600;
   border-radius: 10px;
   outline: none;
   background: rgb(163, 49, 163);
+  color: white;
 }
 
 .list-item button {
-  width: 35%;
+  width: 12%;
   background: rgb(241, 9, 9);
   font-size: 1.2rem;
   border-radius: 10px;
   outline: none;
+  color: white;
 }
 
 .list-item button:hover {
@@ -27,8 +31,8 @@
 }
 
 .list-item input[type="checkbox"] {
-  width: 5%;
-  height: 3vh;
+  width: 15%;
+  height: 25px;
   align-self: center;
   cursor: pointer;
 }

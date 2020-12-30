@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const ToDoForm = ({ handleChange, handleSubmit, todoValue }) => {
+const ToDoForm = ({ handleChange, handleSubmit, todoValue, handleBgColor }) => {
   return (
     <form className="form" onSubmit={handleSubmit}>
       <input
@@ -11,6 +11,7 @@ const ToDoForm = ({ handleChange, handleSubmit, todoValue }) => {
         value={todoValue}
       />
       <button type="submit">Add</button>
+      <input type="color" onChange={handleBgColor} />
     </form>
   );
 };

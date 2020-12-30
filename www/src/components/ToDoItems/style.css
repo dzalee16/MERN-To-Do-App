@@ -4,4 +4,6 @@
   height: 50vh;
   margin: 0 auto;
   padding: 0;
+  border: 1px solid rgb(167, 78, 167);
+  overflow-y: auto;
 }
