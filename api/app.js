@@ -1,22 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv/config");
-const landingRoute = require("./routes/landing");
-
 const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
+require("dotenv/config");
+
+//Import routes
+const todosRoute = require("./routes/todos");
 
 //Middlewares
-// app.use("/home", () => {
-//   console.log("This is the middlewares");
-// });
+app.use(bodyParser.json());
+app.use(cors());
 
-//ROUTES
-// app.get("/", (req, res) => {
-//   res.send("We are on the server");
-// });
-
-//Access to the route
-app.use("/", landingRoute);
+//Access to the route (middlewares)
+app.use("/todos", todosRoute);
 
 //Connect to DB
 mongoose.connect(
@@ -25,8 +22,8 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
-  () => console.log("Connected to DB Mladen2")
+  () => console.log("Connected to DB Mladen")
 );
 
-//How to lisening the server
+//Listening the server
 app.listen(8080);
