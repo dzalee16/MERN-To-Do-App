@@ -1,21 +1,34 @@
 import React, { useEffect, useState } from "react";
 import ToDoForm from "./components/ToDoForm";
 import ToDoItems from "./components/ToDoItems";
+// import { addTask, getAllTasks } from "./services/services";
 import "./App.css";
 
 const App = () => {
-  const [todoValue, setTodoValue] = useState("");
+  const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
   const [bgColor, setBgColor] = useState("");
 
   const handleChange = (e) => {
-    setTodoValue(e.target.value);
+    setText(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodos([...todos, todoValue]);
-    setTodoValue("");
+    setTodos([...todos, text]);
+    // const data = {
+    //   title: text,
+    //   completed: false,
+    // };
+
+    // addTask(data)
+    //   .then((res) => {
+    //     console.log("Succeffuly add task to DB", res);
+    //   })
+    //   .catch((err) => {
+    //     console.log("Error", err);
+    //   });
+    setText("");
   };
 
   //remove ToDos
@@ -37,13 +50,23 @@ const App = () => {
     setBgColor(e.target.value);
   };
 
+  // useEffect(() => {
+  //   getAllTasks()
+  //     .then((res) => {
+  //       console.log(res);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
   return (
     <main className="app">
       <h1>To Do - List</h1>
       <div className="content">
         <ToDoForm
           className="form"
-          todoValue={todoValue}
+          text={text}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleBgColor={handleBgColor}
