@@ -1,29 +1,38 @@
 import React, { useState } from "react";
 import "./style.css";
 
-const ToDoItem = ({ todo, removeItems, index, editItems }) => {
-  const [isCompleted, setIsCompleted] = useState(false);
-
-  const handleCompleted = (e) => {
-    if (e.target.checked) {
-      setIsCompleted(true);
-    } else {
-      setIsCompleted(false);
-    }
-  };
+const ToDoItem = ({ todo, removeItems, index, editItems, handleCompleted }) => {
+  // const [isCompleted, setIsCompleted] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   return (
     <li className="list-item">
       <input
+        className={`text-input ${todo.completed && "completed"}`}
         type="text"
-        value={todo}
+        value={todo.title}
+        disabled={isDisabled}
         onChange={(e) => editItems(e.target.value, index)}
-        style={{ textDecoration: isCompleted && "line-through" }}
       />
-      <button type="button" onClick={() => removeItems(index)}>
+      <button
+        className="edit"
+        type="button"
+        onClick={() => setIsDisabled(!isDisabled)}
+      >
+        Edit
+      </button>
+      <button
+        className="delete"
+        type="button"
+        onClick={() => removeItems(index)}
+      >
         Delete
       </button>
-      <input type="checkbox" onClick={handleCompleted} />
+      <input
+        type="checkbox"
+        className="chkbox-input"
+        onClick={() => handleCompleted(index)}
+      />
     </li>
   );
 };

@@ -6,7 +6,7 @@
   background: rgb(163, 49, 163);
 }
 
-.list-item input[type="text"] {
+.text-input {
   width: 70%;
   padding-left: 10px;
   font-size: 1.2rem;
@@ -17,8 +17,8 @@
   color: white;
 }
 
-.list-item button {
-  width: 12%;
+.list-item .delete {
+  width: 8%;
   background: rgb(241, 9, 9);
   font-size: 1.2rem;
   border-radius: 10px;
@@ -26,11 +26,25 @@
   color: white;
 }
 
+.list-item .edit {
+  width: 8%;
+  background: rgb(11, 11, 179);
+  font-size: 1.2rem;
+  border-radius: 10px;
+  outline: none;
+  color: white;
+}
+
+.completed {
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+
 .list-item button:hover {
   cursor: pointer;
 }
 
-.list-item input[type="checkbox"] {
+.chkbox-input {
   width: 15%;
   height: 25px;
   align-self: center;

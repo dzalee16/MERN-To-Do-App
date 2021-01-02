@@ -2,27 +2,27 @@ import axios from "axios";
 
 const baseURL = "http://localhost:8080";
 
-//Post task
-export const addTask = (data) => {
+//Post Todo
+export const addTodo = (data) => {
   return axios.post(`${baseURL}/todos`, data);
 };
 
-//Get all tasks
-export const getAllTasks = () => {
+//Get all Todos
+export const getAllTodos = () => {
   return axios.get(`${baseURL}/todos`);
 };
 
-//Get One task
-export const getOneTask = (taskId) => {
-  return axios.get(`${baseURL}/todos/:${taskId}`);
+//Get One Todo
+export const getOneTodo = (todoId) => {
+  return axios.get(`${baseURL}/todos/${todoId}`);
 };
 
-//Delete task
-export const deleteTask = (taskId) => {
-  return axios.remove(`${baseURL}/todos/:${taskId}`);
+//Delete Todo
+export const deleteTodo = (todoId) => {
+  return axios.delete(`${baseURL}/todos/${todoId}`);
 };
 
-//Update task
-export const updateTask = (taskId, value) => {
-  return axios.patch(`${baseURL}/todos/:${taskId}`);
+//Update Todo
+export const updateTodo = (todoId, data) => {
+  return axios.patch(`${baseURL}/todos/${todoId}`, data);
 };
