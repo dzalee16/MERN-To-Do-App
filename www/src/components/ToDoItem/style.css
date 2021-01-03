@@ -20,7 +20,7 @@
 .list-item .delete {
   width: 8%;
   background: rgb(241, 9, 9);
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 10px;
   outline: none;
   color: white;
@@ -29,15 +29,25 @@
 .list-item .edit {
   width: 8%;
   background: rgb(11, 11, 179);
-  font-size: 1.2rem;
+  font-size: 1rem;
   border-radius: 10px;
   outline: none;
   color: white;
 }
 
+.list-item .submit-edit {
+  width: 8%;
+  background: rgb(240, 240, 13);
+  font-size: 1rem;
+  border-radius: 10px;
+  outline: none;
+  color: rgb(47, 3, 47);
+}
+
 .completed {
   text-decoration: line-through;
   text-decoration-color: red;
+  text-decoration-style: wavy;
 }
 
 .list-item button:hover {
@@ -45,7 +55,7 @@
 }
 
 .chkbox-input {
-  width: 15%;
+  width: 5%;
   height: 25px;
   align-self: center;
   cursor: pointer;

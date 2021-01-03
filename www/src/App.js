@@ -79,22 +79,25 @@ const App = () => {
 
   //edit ToDos
   const editItems = (newValue, i) => {
+    setTodos(
+      todos.map((todo, index) =>
+        index === i ? { ...todo, title: newValue } : { ...todo }
+      )
+    );
+  };
+
+  //Edit submit
+  const handleEdit = (i) => {
     let newTodos = [...todos];
     newTodos.map((todo, index) => {
       if (index === i) {
         const id = todo._id;
         const data = {
           ...todo,
-          title: newValue,
         };
         updateTodo(id, data)
-          .then((res) => {
-            return getAllTodos();
-          })
-          .then((res) => {
-            setTodos(res.data);
-          })
-          .catch((err) => console.log(err));
+          .then((res) => console.log("Sucefully update todo", res))
+          .catch((err) => console.log("Error", err));
       }
       return newTodos;
     });
@@ -109,7 +112,7 @@ const App = () => {
   const handleCompleted = (i) => {
     setTodos(
       todos.map((todo, index) => {
-        if (index === i) {
+        if (i === index) {
           return {
             ...todo,
             completed: !todo.completed,
@@ -120,6 +123,18 @@ const App = () => {
         };
       })
     );
+    todos.map((todo, index) => {
+      if (index === i) {
+        const id = todo._id;
+        const data = {
+          ...todo,
+          completed: !todo.completed,
+        };
+        updateTodo(id, data)
+          .then((res) => console.log("Mladen", res))
+          .catch((err) => console.log(err));
+      }
+    });
   };
 
   return (
@@ -133,14 +148,17 @@ const App = () => {
           handleSubmit={handleSubmit}
           handleBgColor={handleBgColor}
         />
-        <ToDoItems
-          className="list-items"
-          todos={todos}
-          removeItems={removeItems}
-          editItems={editItems}
-          bgColor={bgColor}
-          handleCompleted={handleCompleted}
-        />
+        {todos.length !== 0 && (
+          <ToDoItems
+            className="list-items"
+            todos={todos}
+            removeItems={removeItems}
+            editItems={editItems}
+            bgColor={bgColor}
+            handleCompleted={handleCompleted}
+            handleEdit={handleEdit}
+          />
+        )}
       </div>
     </main>
   );

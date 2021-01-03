@@ -8,6 +8,7 @@ const ToDoItems = ({
   editItems,
   bgColor,
   handleCompleted,
+  handleEdit,
 }) => {
   return (
     <ul className="unordered-list" style={{ backgroundColor: bgColor }}>
@@ -19,6 +20,7 @@ const ToDoItems = ({
           removeItems={removeItems}
           editItems={editItems}
           handleCompleted={handleCompleted}
+          handleEdit={handleEdit}
         />
       ))}
     </ul>

@@ -52,7 +52,7 @@ router.patch("/:todosId", async (req, res) => {
   try {
     const updatedTodo = await Todos.updateOne(
       { _id: req.params.todosId },
-      { $set: { title: req.body.title } }
+      { $set: { title: req.body.title, completed: req.body.completed } }
     );
     res.json(updatedTodo);
   } catch (err) {
