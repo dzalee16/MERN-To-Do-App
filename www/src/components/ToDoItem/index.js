@@ -45,7 +45,8 @@ const ToDoItem = ({
       </button>
       <input
         type="checkbox"
-        defaultChecked={todo.completed}
+        readOnly
+        checked={false}
         className="chkbox-input"
         onClick={() => handleCompleted(index)}
       />

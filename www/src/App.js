@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ToDoForm from "./components/ToDoForm";
 import ToDoItems from "./components/ToDoItems";
+import CompletedItems from "./components/CompletedItems";
 import {
   addTodo,
   getAllTodos,
@@ -12,28 +13,37 @@ import "./App.css";
 const App = () => {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
+  const [completedTodos, setCompletedTodos] = useState([]);
   const [bgColor, setBgColor] = useState("");
 
-  //Get all tasks from DB
+  //Get all non-completed todos from DB
   useEffect(() => {
     getAllTodos()
       .then((res) => {
         const data = res.data;
-        setTodos(data);
+        let nonCompletedTodos = [];
+        data.forEach((todo) => {
+          if (!todo.completed) {
+            nonCompletedTodos.push(todo);
+          }
+        });
+        setTodos(nonCompletedTodos);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [setTodos]);
 
   useEffect(() => {
     console.log(todos);
   }, [todos]);
 
+  //Change input value
   const handleChange = (e) => {
     setText(e.target.value);
   };
 
+  //Submitting todos
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -47,7 +57,14 @@ const App = () => {
         return getAllTodos();
       })
       .then((res) => {
-        setTodos(res.data);
+        const data = res.data;
+        let nonCompletedTodos = [];
+        data.forEach((todo) => {
+          if (!todo.completed) {
+            nonCompletedTodos.push(todo);
+          }
+        });
+        setTodos(nonCompletedTodos);
       })
       .catch((err) => {
         console.log("Error", err);
@@ -110,20 +127,7 @@ const App = () => {
 
   //Mark as completed
   const handleCompleted = (i) => {
-    setTodos(
-      todos.map((todo, index) => {
-        if (i === index) {
-          return {
-            ...todo,
-            completed: !todo.completed,
-          };
-        }
-        return {
-          ...todo,
-        };
-      })
-    );
-    todos.map((todo, index) => {
+    todos.forEach((todo, index) => {
       if (index === i) {
         const id = todo._id;
         const data = {
@@ -131,7 +135,57 @@ const App = () => {
           completed: !todo.completed,
         };
         updateTodo(id, data)
-          .then((res) => console.log("Mladen", res))
+          .then((res) => {
+            console.log("Succefully updated todo as completed", res);
+            return getAllTodos();
+          })
+          .then((res) => {
+            const data = res.data;
+            let todos = [];
+            let completedTodos = [];
+            data.forEach((todo) => {
+              if (!todo.completed) {
+                todos.push(todo);
+              } else {
+                completedTodos.push(todo);
+              }
+            });
+            setTodos(todos);
+            setCompletedTodos(completedTodos);
+          })
+          .catch((err) => console.log(err));
+      }
+    });
+  };
+
+  //Mark as non-completed
+  const hadleNonCompleted = (i) => {
+    completedTodos.forEach((completedTodo, index) => {
+      if (index === i) {
+        const id = completedTodo._id;
+        const data = {
+          ...completedTodo,
+          completed: !completedTodo.completed,
+        };
+        updateTodo(id, data)
+          .then((res) => {
+            console.log("Succefully updated todo as completed", res);
+            return getAllTodos();
+          })
+          .then((res) => {
+            const data = res.data;
+            let completedTodos = [];
+            let todos = [];
+            data.forEach((todo) => {
+              if (todo.completed) {
+                completedTodos.push(todo);
+              } else {
+                todos.push(todo);
+              }
+            });
+            setCompletedTodos(completedTodos);
+            setTodos(todos);
+          })
           .catch((err) => console.log(err));
       }
     });
@@ -148,6 +202,7 @@ const App = () => {
           handleSubmit={handleSubmit}
           handleBgColor={handleBgColor}
         />
+        {/* <button type="button">Completed Todos</button> */}
         {todos.length !== 0 && (
           <ToDoItems
             className="list-items"
@@ -159,6 +214,11 @@ const App = () => {
             handleEdit={handleEdit}
           />
         )}
+        <CompletedItems
+          hadleNonCompleted={hadleNonCompleted}
+          setCompletedTodos={setCompletedTodos}
+          completedTodos={completedTodos}
+        />
       </div>
     </main>
   );
