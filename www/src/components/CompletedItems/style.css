@@ -7,3 +7,8 @@
   border: 1px solid rgb(167, 78, 167);
   overflow-y: auto;
 }
+
+.unordered-list-completedTodos h3 {
+  color: white;
+  text-align: center;
+}

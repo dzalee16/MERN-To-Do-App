@@ -12,6 +12,16 @@ export const getAllTodos = () => {
   return axios.get(`${baseURL}/todos`);
 };
 
+//Get all completed todos
+export const getCompletedTodos = () => {
+  return axios.get(`${baseURL}/todos/completed`);
+};
+
+//Get all non-completed todos
+export const getNonCompletedTodos = () => {
+  return axios.get(`${baseURL}/todos/noncompleted`);
+};
+
 //Get One Todo
 export const getOneTodo = (todoId) => {
   return axios.get(`${baseURL}/todos/${todoId}`);

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import CompletedItem from "../CompletedItem";
-import { getAllTodos } from "../../services/services";
+import { getCompletedTodos } from "../../services/services";
 import "./style.css";
 
 const CompletedItems = ({
@@ -9,30 +9,19 @@ const CompletedItems = ({
   setCompletedTodos,
 }) => {
   useEffect(() => {
-    getAllTodos()
+    getCompletedTodos()
       .then((res) => {
         const data = res.data;
-        let completedTodos = [];
-        data.forEach((elem) => {
-          if (elem.completed) {
-            completedTodos.push(elem);
-          }
-        });
-        setCompletedTodos(completedTodos);
+        setCompletedTodos(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [setCompletedTodos]);
 
-  useEffect(() => {
-    console.log(completedTodos);
-  }, [completedTodos]);
-
   return (
     <div className="unordered-list-completedTodos">
-      <h4>Completed Todos</h4>
-
+      <h3>Completed Todos</h3>
       <ul>
         {completedTodos.map((completedTodo, index) => (
           <CompletedItem

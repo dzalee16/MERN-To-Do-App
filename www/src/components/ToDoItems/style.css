@@ -1,4 +1,4 @@
-.unordered-list {
+.unordered-list-todos {
   list-style-type: none;
   width: 80vw;
   height: 50vh;
@@ -6,4 +6,9 @@
   padding: 0;
   border: 1px solid rgb(167, 78, 167);
   overflow-y: auto;
+}
+
+.unordered-list-todos h3 {
+  color: white;
+  text-align: center;
 }

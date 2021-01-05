@@ -17,13 +17,27 @@
   color: white;
 }
 
+@media (max-width: 900px) {
+  .text-input {
+    width: 50%;
+    font-size: 1rem;
+  }
+}
+
 .list-item .delete {
   width: 8%;
   background: rgb(241, 9, 9);
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 10px;
   outline: none;
   color: white;
+}
+
+@media (max-width: 900px) {
+  .list-item .delete {
+    width: 15%;
+    font-size: 3vw;
+  }
 }
 
 .list-item .edit {
@@ -35,6 +49,13 @@
   color: white;
 }
 
+@media (max-width: 900px) {
+  .list-item .edit {
+    width: 15%;
+    font-size: 3vw;
+  }
+}
+
 .list-item .submit-edit {
   width: 8%;
   background: rgb(240, 240, 13);
@@ -42,6 +63,13 @@
   border-radius: 10px;
   outline: none;
   color: rgb(47, 3, 47);
+}
+
+@media (max-width: 900px) {
+  .list-item .submit-edit {
+    width: 15%;
+    font-size: 3vw;
+  }
 }
 
 .completed {
@@ -59,4 +87,10 @@
   height: 25px;
   align-self: center;
   cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .chkbox-input {
+    width: 5%;
+  }
 }

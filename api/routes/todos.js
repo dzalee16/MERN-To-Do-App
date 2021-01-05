@@ -12,6 +12,38 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Get all completed todos
+router.get("/completed", async (req, res) => {
+  try {
+    const todos = await Todos.find();
+    let data = [];
+    todos.forEach((elem) => {
+      if (elem.completed) {
+        data.push(elem);
+      }
+    });
+    res.json(data);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
+//Get all non-completed todos
+router.get("/noncompleted", async (req, res) => {
+  try {
+    const todos = await Todos.find();
+    let data = [];
+    todos.forEach((elem) => {
+      if (!elem.completed) {
+        data.push(elem);
+      }
+    });
+    res.json(data);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 //Create todo
 router.post("/", async (req, res) => {
   const todo = new Todos({
@@ -40,7 +72,7 @@ router.get("/:todosId", async (req, res) => {
 //Remove speciific todo
 router.delete("/:todosId", async (req, res) => {
   try {
-    const deleteTodo = await Todos.remove({ _id: req.params.todosId });
+    const deleteTodo = await Todos.deleteOne({ _id: req.params.todosId });
     res.json(deleteTodo);
   } catch (err) {
     res.json({ message: err });

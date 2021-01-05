@@ -5,6 +5,7 @@ import CompletedItems from "./components/CompletedItems";
 import {
   addTodo,
   getAllTodos,
+  getNonCompletedTodos,
   deleteTodo,
   updateTodo,
 } from "./services/services";
@@ -18,25 +19,15 @@ const App = () => {
 
   //Get all non-completed todos from DB
   useEffect(() => {
-    getAllTodos()
+    getNonCompletedTodos()
       .then((res) => {
         const data = res.data;
-        let nonCompletedTodos = [];
-        data.forEach((todo) => {
-          if (!todo.completed) {
-            nonCompletedTodos.push(todo);
-          }
-        });
-        setTodos(nonCompletedTodos);
+        setTodos(data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [setTodos]);
-
-  useEffect(() => {
-    console.log(todos);
-  }, [todos]);
 
   //Change input value
   const handleChange = (e) => {
@@ -54,17 +45,11 @@ const App = () => {
 
     addTodo(data)
       .then((res) => {
-        return getAllTodos();
+        return getNonCompletedTodos();
       })
       .then((res) => {
         const data = res.data;
-        let nonCompletedTodos = [];
-        data.forEach((todo) => {
-          if (!todo.completed) {
-            nonCompletedTodos.push(todo);
-          }
-        });
-        setTodos(nonCompletedTodos);
+        setTodos(data);
       })
       .catch((err) => {
         console.log("Error", err);
@@ -81,10 +66,11 @@ const App = () => {
         const id = todo._id;
         deleteTodo(id)
           .then((res) => {
-            return getAllTodos();
+            return getNonCompletedTodos();
           })
           .then((res) => {
-            setTodos(res.data);
+            const data = res.data;
+            setTodos(data);
           })
           .catch((err) => {
             console.log("Error", err);
@@ -113,7 +99,7 @@ const App = () => {
           ...todo,
         };
         updateTodo(id, data)
-          .then((res) => console.log("Sucefully update todo", res))
+          .then((res) => console.log("Sucefully update todo"))
           .catch((err) => console.log("Error", err));
       }
       return newTodos;
@@ -136,7 +122,7 @@ const App = () => {
         };
         updateTodo(id, data)
           .then((res) => {
-            console.log("Succefully updated todo as completed", res);
+            console.log("Succefully updated todo as completed");
             return getAllTodos();
           })
           .then((res) => {
@@ -169,7 +155,7 @@ const App = () => {
         };
         updateTodo(id, data)
           .then((res) => {
-            console.log("Succefully updated todo as completed", res);
+            console.log("Succefully updated todo as completed");
             return getAllTodos();
           })
           .then((res) => {
@@ -202,7 +188,6 @@ const App = () => {
           handleSubmit={handleSubmit}
           handleBgColor={handleBgColor}
         />
-        {/* <button type="button">Completed Todos</button> */}
         {todos.length !== 0 && (
           <ToDoItems
             className="list-items"
