@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8080";
+const baseURL = "http://localhost:5000";
 
 //Post Todo
 export const addTodo = (data) => {

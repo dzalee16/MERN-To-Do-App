@@ -5,6 +5,12 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv/config");
 
+const PORT = 5000;
+const options = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+};
+
 //Import routes
 const todosRoute = require("./routes/todos");
 
@@ -16,14 +22,13 @@ app.use(cors());
 app.use("/todos", todosRoute);
 
 //Connect to DB
-mongoose.connect(
-  process.env.DB_CONNECTION,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => console.log("Connected to DB Mladen")
-);
+mongoose.connect(process.env.DB_CONNECTION, options, (err) => {
+  if (err) {
+    console.log("Error");
+  } else {
+    console.log("Connected to MongoDB Mladen");
+  }
+});
 
 //Listening the server
-app.listen(8080);
+app.listen(PORT, () => console.log(`Listening port ${PORT}`));
