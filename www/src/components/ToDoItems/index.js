@@ -6,14 +6,13 @@ const ToDoItems = ({
   todos,
   removeItems,
   editItems,
-  bgColor,
   handleCompleted,
   handleEdit,
 }) => {
   return (
     <div className="unordered-list-todos">
       <h3>Todos</h3>
-      <ul style={{ backgroundColor: bgColor }}>
+      <ul>
         {todos.map((todo, index) => (
           <ToDoItem
             key={index}

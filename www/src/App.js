@@ -15,7 +15,6 @@ const App = () => {
   const [text, setText] = useState("");
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
-  const [bgColor, setBgColor] = useState("");
 
   //Get all non-completed todos from DB
   useEffect(() => {
@@ -106,11 +105,6 @@ const App = () => {
     });
   };
 
-  //chnage bg color
-  const handleBgColor = (e) => {
-    setBgColor(e.target.value);
-  };
-
   //Mark as completed
   const handleCompleted = (i) => {
     todos.forEach((todo, index) => {
@@ -186,7 +180,6 @@ const App = () => {
           text={text}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
-          handleBgColor={handleBgColor}
         />
         {todos.length !== 0 && (
           <ToDoItems
@@ -194,7 +187,6 @@ const App = () => {
             todos={todos}
             removeItems={removeItems}
             editItems={editItems}
-            bgColor={bgColor}
             handleCompleted={handleCompleted}
             handleEdit={handleEdit}
           />

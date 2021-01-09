@@ -24,7 +24,7 @@ app.use("/todos", todosRoute);
 //Connect to DB
 mongoose.connect(process.env.DB_CONNECTION, options, (err) => {
   if (err) {
-    console.log("Error");
+    console.log("Can't connect to MongoDB");
   } else {
     console.log("Connected to MongoDB Mladen");
   }
