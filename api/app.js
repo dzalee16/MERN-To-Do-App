@@ -3,9 +3,10 @@ const mongoose = require("mongoose");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-require("dotenv/config");
+// require("dotenv/config");
 
 const PORT = 5000;
+const connectionString = "mongodb://db:27017/mladen-db"
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -22,11 +23,11 @@ app.use(cors());
 app.use("/todos", todosRoute);
 
 //Connect to DB
-mongoose.connect(process.env.DB_CONNECTION, options, (err) => {
+mongoose.connect(connectionString, options, (err) => {
   if (err) {
     console.log("Can't connect to MongoDB");
   } else {
-    console.log("Connected to MongoDB Mladen");
+    console.log("Connected to MongoDB");
   }
 });
 
