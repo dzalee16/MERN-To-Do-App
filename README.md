@@ -9,6 +9,16 @@ My assignment for the interview!!!
  - node.js
  - Docker
 
+ ## Instalation
+ 
+ - Install docker and docker-compose comannd
+ - Clone git repository
+ - Run docker-compose up in terminal
+
+## Starting app
+
+ - After compose finish go to (http://localhost:8080) to view app in browser.
+
 ## Functionalities
 
  - create todo task

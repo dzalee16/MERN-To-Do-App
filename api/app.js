@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// require("dotenv/config");
 
 const PORT = 5000;
 const connectionString = "mongodb://db:27017/mladen-db"
