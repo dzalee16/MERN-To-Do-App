@@ -2,19 +2,27 @@ version: "3"
 services: 
   mladen-www:
     image: mladen-www
+    build: ./www/
     stdin_open: true
     ports: 
       - "8080:3000"
     networks: 
       - mern-app
+    volumes: 
+      - ./www/:/app
+      - /app/node_modules
     depends_on: 
       - mladen-api
   mladen-api:
     image: mladen-api
+    build: ./api/
     ports: 
       - "5000:5000"
     networks: 
       - mern-app
+    volumes:
+      - ./api/:/app
+      - /app/node_modules  
     depends_on: 
       - db
   db:
