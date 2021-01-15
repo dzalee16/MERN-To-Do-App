@@ -6,7 +6,7 @@ const ToDoForm = ({ handleChange, handleSubmit, text }) => {
     <form className="form" onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Enter task..."
+        placeholder="Enter todo..."
         onChange={handleChange}
         value={text}
       />

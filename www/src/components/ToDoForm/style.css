@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   width: 60vw;
-  margin: 50px auto;
+  margin: 10px auto;
 }
 
 .form input[type="text"] {
@@ -12,6 +12,10 @@
   background: rgb(163, 49, 163);
   font-size: 1.2rem;
   padding: 6px;
+  color: white;
+}
+
+::-webkit-input-placeholder {
   color: white;
 }
 

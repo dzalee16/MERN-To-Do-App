@@ -6,11 +6,16 @@
 
 body {
   font-family: sans-serif;
-  background: linear-gradient(250deg, #3a249c, #75185e);
+  background:linear-gradient(250deg, rgba(30, 13, 107, 0.4), rgba(117, 24, 94, 0.3)), url("./images/ToDo.png");
+  background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
 }
 
 .app h1 {
   text-align: center;
-  color: white;
-  margin: 20px 0;
+  color: rgb(0, 0, 10);
+  margin: 10px 0;
 }

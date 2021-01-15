@@ -1,7 +1,7 @@
 .unordered-list-todos {
   list-style-type: none;
   width: 80vw;
-  height: 50vh;
+  height: 40vh;
   margin: 0 auto;
   padding: 0;
   border: 1px solid rgb(167, 78, 167);
@@ -9,6 +9,6 @@
 }
 
 .unordered-list-todos h3 {
-  color: white;
+  color: rgb(0, 0, 10);
   text-align: center;
 }
