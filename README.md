@@ -1,7 +1,7 @@
 MERN app!!!
 # ToDo app
 
-## Tehnologies:
+## Technologies:
 
  - mongoDB
  - express.js
