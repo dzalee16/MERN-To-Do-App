@@ -1,4 +1,4 @@
-My assignment for the interview!!!
+MERN app!!!
 # ToDo app
 
 ## Tehnologies:
